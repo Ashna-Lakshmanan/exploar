@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutterui/admin.dart';
+import 'package:flutterui/cs_it.dart';
+import 'package:flutterui/mech.dart';
+import 'package:flutterui/ec.dart';
+import 'package:flutterui/eee.dart';
+import 'package:flutterui/civil.dart';
+import 'package:flutterui/navigate.dart';
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -18,6 +24,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: 'ExplorAR',
       home: MyHomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -54,9 +61,9 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const <Widget>[
-            Padding(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            const Padding(
               padding: EdgeInsets.only(left: 19.0, top: 50.0),
               child: Text("Browse by Departments",
                   overflow: TextOverflow.visible,
@@ -70,14 +77,43 @@ class _MyHomePageState extends State<MyHomePage> {
                     /* letterSpacing: 0.0, */
                   )),
             ),
-            Padding(
+            const Padding(
               padding: EdgeInsets.only(left: 11.0),
               child: BrowseBlocksScroll(),
             ),
-            SizedBox(
+            const SizedBox(
               height: 90,
             ),
-            DestinationScroll(),
+            const DestinationScroll(),
+            const SizedBox(
+              height: 50,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 66.0),
+              child: SizedBox(
+                height: 60,
+                width: 250,
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Navigate()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                      primary: const Color.fromARGB(255, 249, 249, 249),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50))),
+                  child: const Text(
+                    'Navigate',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 93, 18, 18),
+                        fontSize: 27,
+                        fontFamily: 'Cardo'),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -141,7 +177,12 @@ class BrowseBlocksScroll extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(26))))
                     .copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CsitPage()),
+                  );
+                },
                 child: const Text(
                   'CS-IT',
                   style: TextStyle(
@@ -166,7 +207,12 @@ class BrowseBlocksScroll extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(26))))
                     .copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MechPage()),
+                  );
+                },
                 child: const Text(
                   'MECH',
                   style: TextStyle(
@@ -191,7 +237,12 @@ class BrowseBlocksScroll extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(26))))
                     .copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const EeePage()),
+                  );
+                },
                 child: const Text(
                   'EEE',
                   style: TextStyle(
@@ -216,7 +267,12 @@ class BrowseBlocksScroll extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(26))))
                     .copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const EcPage()),
+                  );
+                },
                 child: const Text(
                   'EC',
                   style: TextStyle(
@@ -241,7 +297,12 @@ class BrowseBlocksScroll extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.all(Radius.circular(26))))
                     .copyWith(elevation: ButtonStyleButton.allOrNull(0.0)),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CivilPage()),
+                  );
+                },
                 child: const Text(
                   'CIVIL',
                   style: TextStyle(
