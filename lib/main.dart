@@ -39,82 +39,105 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 59, 59, 59),
-        bottomOpacity: 0.0,
-        shadowColor: Colors.white,
-        elevation: 26,
-      ),
-      body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment(0.0, -1.0),
-            end: Alignment(0.0, 0.9999999999999998),
-            stops: [0.0, 0.0, 1.0],
-            colors: [
-              Color.fromARGB(255, 66, 0, 255),
-              Color.fromARGB(255, 0, 139, 241),
-              Color.fromARGB(255, 20, 40, 80)
-            ],
+    return SlidingUpPanel(
+      backdropEnabled: true,
+      header: const Padding(
+        padding: EdgeInsets.only(left: 30.0, top: 15),
+        child: Text(
+          'For more...',
+          style: TextStyle(
+            fontSize: 25,
+            fontFamily: 'Cardo',
+            color: Color.fromARGB(255, 93, 18, 18),
+            //fontWeight: FontWeight.w700,
           ),
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            const Padding(
-              padding: EdgeInsets.only(left: 19.0, top: 50.0),
-              child: Text("Browse by Departments",
-                  overflow: TextOverflow.visible,
-                  textAlign: TextAlign.left,
-                  style: TextStyle(
-                    height: 1.171875,
-                    fontSize: 20.0,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w700,
-                    color: Color.fromARGB(255, 217, 217, 217),
-                    /* letterSpacing: 0.0, */
-                  )),
+      ),
+      minHeight: 60,
+      borderRadius: BorderRadius.circular(50),
+      panel: TextButton(
+        child: const Text('Canteen Menu'),
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => const CanteenPage()));
+        },
+      ),
+      body: Scaffold(
+        appBar: AppBar(
+          backgroundColor: const Color.fromARGB(255, 59, 59, 59),
+          bottomOpacity: 0.0,
+          shadowColor: Colors.white,
+          elevation: 26,
+        ),
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment(0.0, -1.0),
+              end: Alignment(0.0, 0.9999999999999998),
+              stops: [0.0, 0.0, 1.0],
+              colors: [
+                Color.fromARGB(255, 66, 0, 255),
+                Color.fromARGB(255, 0, 139, 241),
+                Color.fromARGB(255, 20, 40, 80)
+              ],
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 11.0),
-              child: BrowseBlocksScroll(),
-            ),
-            const SizedBox(
-              height: 90,
-            ),
-            const DestinationScroll(),
-            const SizedBox(
-              height: 50,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 66.0),
-              child: SizedBox(
-                height: 60,
-                width: 250,
-                child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Navigate()));
-                  },
-                  style: ElevatedButton.styleFrom(
-                      primary: const Color.fromARGB(255, 249, 249, 249),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50))),
-                  child: const Text(
-                    'Navigate',
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const Padding(
+                padding: EdgeInsets.only(left: 19.0, top: 50.0),
+                child: Text("Browse by Departments",
+                    overflow: TextOverflow.visible,
+                    textAlign: TextAlign.left,
                     style: TextStyle(
-                        color: Color.fromARGB(255, 93, 18, 18),
-                        fontSize: 27,
-                        fontFamily: 'Cardo'),
+                      height: 1.171875,
+                      fontSize: 20.0,
+                      fontFamily: 'Montserrat',
+                      fontWeight: FontWeight.w700,
+                      color: Color.fromARGB(255, 217, 217, 217),
+                      /* letterSpacing: 0.0, */
+                    )),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 11.0),
+                child: BrowseBlocksScroll(),
+              ),
+              const SizedBox(
+                height: 90,
+              ),
+              const DestinationScroll(),
+              const SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 66.0),
+                child: SizedBox(
+                  height: 60,
+                  width: 250,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Navigate()));
+                    },
+                    style: ElevatedButton.styleFrom(
+                        primary: const Color.fromARGB(255, 249, 249, 249),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(50))),
+                    child: const Text(
+                      'Navigate',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 93, 18, 18),
+                          fontSize: 27,
+                          fontFamily: 'Cardo'),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
         ),
       ),
     );
