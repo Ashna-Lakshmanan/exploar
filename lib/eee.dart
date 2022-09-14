@@ -130,7 +130,11 @@ class ImageScroll extends StatelessWidget {
               width: 315,
               decoration: const BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(30))),
+                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  image: DecorationImage(
+                      image: AssetImage(
+                          'images/College/EEE/WhatsApp Image 2022-07-31 at 10.53.51 PM.jpeg'),
+                      fit: BoxFit.fill)),
             ),
           ),
           Padding(

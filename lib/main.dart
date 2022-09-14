@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutterui/admin.dart';
+import 'package:flutterui/canteen.dart';
 import 'package:flutterui/cs_it.dart';
+import 'package:flutterui/extra.dart';
 import 'package:flutterui/mech.dart';
 import 'package:flutterui/ec.dart';
 import 'package:flutterui/eee.dart';
 import 'package:flutterui/civil.dart';
 import 'package:flutterui/navigate.dart';
+import 'package:sliding_up_panel/sliding_up_panel.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+final Uri _url = Uri.parse('https://www.cethalassery.ac.in/');
+Future<void> _launchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw 'Could not launch $_url';
+  }
+}
 
 void main() {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -42,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return SlidingUpPanel(
       backdropEnabled: true,
       header: const Padding(
-        padding: EdgeInsets.only(left: 30.0, top: 15),
+        padding: EdgeInsets.only(left: 30.0, top: 15, bottom: 40),
         child: Text(
           'For more...',
           style: TextStyle(
@@ -55,12 +66,52 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       minHeight: 60,
       borderRadius: BorderRadius.circular(50),
-      panel: TextButton(
-        child: const Text('Canteen Menu'),
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const CanteenPage()));
-        },
+      panel: ListView(
+        children: [
+          const SizedBox(
+            height: 30,
+          ),
+          Card(
+            child: ListTile(
+              title: const Text('Canteen Menu'),
+              trailing: const Icon(Icons.keyboard_arrow_right_sharp),
+//onTap calls When ListTile Taps
+              onTap: () {
+//Navigator pushes FirstScreen.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CanteenPage(),
+                  ),
+                );
+              },
+            ),
+          ),
+          Card(
+            child: ListTile(
+              title: const Text('Extra Facilities'),
+              trailing: const Icon(Icons.keyboard_arrow_right_sharp),
+//onTap calls When ListTile Taps
+              onTap: () {
+//Navigator pushes FirstScreen.
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ExtraFacilitiesPage(),
+                  ),
+                );
+              },
+            ),
+          ),
+          const Card(
+            child: ListTile(
+              title: Text('College Website'),
+              trailing: Icon(Icons.keyboard_arrow_right_sharp),
+//onTap calls When ListTile Taps
+              onTap: _launchUrl,
+            ),
+          )
+        ],
       ),
       body: Scaffold(
         appBar: AppBar(
@@ -138,6 +189,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
             ],
+          ),
         ),
       ),
     );
